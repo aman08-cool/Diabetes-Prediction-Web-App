@@ -138,7 +138,7 @@ def main():
     
     
     # title for webpage
-    st.write("<h1><span style='color:#052e7e;'>⚕️ Diabetes Prediction Web App ⚕️</span></h1>", unsafe_allow_html=True)
+    st.write("<h1><span style='color:#FF594F;'>⚕️ Diabetes Prediction Web App ⚕️</span></h1>", unsafe_allow_html=True)
     #st.title('Diabetes Prediction System Web App')
     st.markdown("---")
     
