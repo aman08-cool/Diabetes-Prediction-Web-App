@@ -8,22 +8,13 @@ Created on Tue Jun 27 10:43:53 2023
 
 import numpy as np
 import random
-import requests
 import pickle 
 import streamlit as st
 
 
 
 # loading the saved model
-#loaded_model = pickle.load(open('/Diabetes-Prediction-Web-App/trained_model.sav', 'rb'))
-
-file_url = "https://github.com/aman08-cool/Diabetes-Prediction-Web-App/blob/main/trained_model.sav";
-
-response = requests.get(file_url)
-response.raise_for_status()
-
-# Load the model from the response content
-loaded_model = pickle.loads(response.content)
+loaded_model = pickle.load(open('trained_model.sav', 'rb'))
 
 # creating a function for prediction
 
