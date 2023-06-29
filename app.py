@@ -7,6 +7,7 @@ Created on Tue Jun 27 10:43:53 2023
 """
 
 import numpy as np
+import os
 import random
 import pickle 
 import streamlit as st
