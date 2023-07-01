@@ -34,4 +34,4 @@ To run the web app locally, follow these steps:
    streamlit run app.py
    ```
 
-4. Check out the Project [here]{:target="\_blank"}(https://diabetes-prediction-web-app.onrender.com)
+4. Check out the Project [here](https://diabetes-prediction-web-app.onrender.com)
