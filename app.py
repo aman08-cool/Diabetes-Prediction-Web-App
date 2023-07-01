@@ -44,6 +44,9 @@ def display_random_quote():
 
 def diabetes_prediction(input_data):
     
+    
+    # input_data = (6,148,72,35,0,33.6,0.627,50) # the answer should be that this person is Diabetic
+    # input_data = (4,110,92,0,0,37.6,0.191,30)  # the answer should be that this person is non-Diabetic
 
     # Changing the input data to a NumPy array
     input_data_as_numpy_array = np.asarray(input_data)
