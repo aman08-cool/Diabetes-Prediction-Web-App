@@ -148,7 +148,7 @@ def main():
             st.write("<h5>Stay healthy and take care!💪🙂👌 </h5>",unsafe_allow_html=True)
         else:
             st.error(f"Dear {user_name}, you have diabetes.")
-            st.write("<h5>Take necessary steps to manage your diabetes and consult a healthcare professional 🧑‍⚕️.</h5>")
+            st.write("<h5>Take necessary steps to manage your diabetes and consult a healthcare professional 🧑‍⚕️.</h5>",unsafe_allow_html=True)
             
             
     # Calling Quote Function
