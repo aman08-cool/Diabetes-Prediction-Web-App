@@ -14,28 +14,10 @@ import streamlit as st
 
 
 # loading the saved model
-loaded_model = pickle.load(open('trained_model.sav', 'rb'))
+loaded_model = pickle.load(open('/Users/amankumardwivedi/Desktop/ML Projects/Diebetes_App/trained_model.sav', 'rb'))
 
-# creating a function for prediction
 
-def diabetes_prediction(input_data):
-    
 
-    # Changing the input data to a NumPy array
-    input_data_as_numpy_array = np.asarray(input_data)
-
-    # Reshape the array as we are predicting for one instance
-    input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
-
-    prediction = loaded_model.predict(input_data_reshaped)
-    print(prediction)
-
-    if prediction[0] == 0:
-        return "non-diabetic"
-    else:
-        return "diabetic"
-    
-    
 quotes = [
     "I may have diabetes, but I am not limited by it. I can live a happy, healthy, and adventurous life. – Ally Brooks",
     "I was determined to share my positive approach and not let diabetes stand in the way of enjoying my life. – Paula Deen",
@@ -58,16 +40,35 @@ def display_random_quote():
     )
 
 
-# Footer Function
-def display_footer():
-        st.markdown("<h5 style='position: fixed; bottom : 0; width: 94%; text-align: right; font-style: italic;'>@Made by Aman kr. Dwivedi</h5>", unsafe_allow_html=True)
+# creating a function for prediction
+
+def diabetes_prediction(input_data):
+    
+
+    # Changing the input data to a NumPy array
+    input_data_as_numpy_array = np.asarray(input_data)
+
+    # Reshape the array as we are predicting for one instance
+    input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
+
+    prediction = loaded_model.predict(input_data_reshaped)
+    print(prediction)
+
+    if prediction[0] == 0:
+        return "non-diabetic"
+    else:
+        return "diabetic"
+
+
 
 # User name Function
 def get_user_name():
-        user_name = st.text_input("Enter your name:")
+        user_name = st.text_input("Enter the Female Patient name")
         return user_name
 
+
     
+  
 def main():
     
     st.set_page_config(
@@ -79,86 +80,54 @@ def main():
     page_bg_img = """
     <style>
     [data-testid="stAppViewContainer"]{
-        background-image: url("https://images.unsplash.com/photo-1686942300971-c8f5d0a3b692");
+        background-color: #94d3c6;
+        
         background-size: 100%;
         background-position: top left;
         background-repeat: no-repeat;
         background-attachment: local;
     }
-    .stButton button {
-        background-color: #d9fdd2;
-        color: #419CF0;
-        padding: 10px 20px;
-        border-radius: 5px;
-        border: none;
-        cursor: pointer;
-    }
-    
-    /* Customize the button style */
-    .custom-button {
-    	--offset: 10px;
-    	--border-size: 2px;
-    
-    	display: block;
-    	position: relative;
-    	padding: 1.5em 3em;
-    	appearance: none;
-    	border: 0;
-    	background: transparent;
-    	color: #008DC9;
-    	text-transform: uppercase;
-    	letter-spacing: 0.25em;
-    	outline: none;
-    	cursor: pointer;
-    	font-weight: bold;
-    	border-radius: 10px;
-    	box-shadow: inset 0 0 0 var(--border-size) currentcolor;
-    	transition: background 0.8s ease;
-    
-    	&:hover {
-    		background: rgba(217, 253, 210, 1);
-    	}
-    }
-    
-    </style>
     """
-    
-    button_html = """
-    <button class="custom-button" >
-        <a href="https://www.who.int/health-topics/diabetes#tab=tab_1">
-             What is Diabetes ?
-        </a>
-    </button>
-    """
-
-    st.write(button_html, unsafe_allow_html=True)
-
-
     st.markdown(page_bg_img, unsafe_allow_html=True)
     
+    # giving a title
+    #st.title('Diabetes Prediction Web App')
+    st.write("<h1><span style='color:#052e7e;'>Let's Check Your Diabetes 💉</span></h1>", unsafe_allow_html=True)
+    st.markdown('---')
     
-    # title for webpage
-    st.write("<h1><span style='color:#FF594F;'>⚕️ Diabetes Prediction Web App ⚕️</span></h1>", unsafe_allow_html=True)
-    #st.title('Diabetes Prediction System Web App')
-    st.markdown("---")
     
-    # User Name
-    user_name = get_user_name()
     
     
     # getting the input data from the user
     col1, col2 = st.columns(2)
     with col1:
-        pregnancies = st.number_input('Number of Pregnancies', min_value=0, max_value=20, value=0)
-        glucose = st.number_input('Glucose Level', min_value=0, max_value=500, value=100)
-        blood_pressure = st.number_input('Blood Pressure Value', min_value=0, max_value=300, value=60)
-        skin_thickness = st.number_input('Skin Thickness Value', min_value=0, max_value=100, value=20)
+        user_name = get_user_name()
+        Pregnancies = st.number_input('Number of Pregnancies', min_value=0, max_value=20, value=0)
+        Glucose = st.number_input('Glucose Level', min_value=0, max_value=500, value=100)
+        BloodPressure = st.number_input('Blood Pressure Value', min_value=0, max_value=300, value=60)
+        SkinThickness = st.number_input('Skin Thickness Value', min_value=0, max_value=100, value=20)
     with col2:
-        insulin = st.number_input('Insuline Level', min_value=0, max_value=1000, value=0)
-        bmi = st.number_input('BMI Value', min_value=0.0, max_value=100.0, value=25.0)
-        diabetes_pedigree_function = st.text_input('Diabetes Pedigree Function Value')
-        age = st.number_input('Age of the Person', min_value=0, max_value=150, value=30)
+        Insulin = st.number_input('Insuline Level', min_value=0, max_value=1000, value=0)
+        BMI = st.number_input('BMI Value', min_value=0.0, max_value=100.0, value=25.0)
+        DiabetesPedigreeFunction = st.text_input('Diabetes Pedigree Function Value')
+        Age = st.number_input('Age of the Person', min_value=0, max_value=150, value=30)
     
+    
+    
+    
+    #Pregnancies = st.text_input('Number of Pregnancies')
+    #Glucose = st.text_input('Glucose Level')
+    #BloodPressure = st.text_input('Blood Pressure value')
+    #SkinThickness = st.text_input('Skin Thickness value')
+    #Insulin = st.text_input('Insulin Level')
+    #BMI = st.text_input('BMI value')
+    #DiabetesPedigreeFunction = st.text_input('Diabetes Pedigree Function value')
+    #Age = st.text_input('Age of the Person')
+    
+    
+    
+    
+
     st.markdown("---")
     # code for prediction
     diagnosis = ''
@@ -166,34 +135,28 @@ def main():
     # creating a button for prediction
     
     if st.button('Diabetes Test Result'):
-        diagnosis = diabetes_prediction([pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, diabetes_pedigree_function, age])
+        diagnosis = diabetes_prediction([Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age])
     
-    
-    st.markdown("---")
+
     if diagnosis:
         st.subheader('Diagnosis:')
         if diagnosis == 'non-diabetic':
             st.success(f"Dear {user_name}, you don't have diabetes.")
-            st.write("Stay healthy and take care!")
+            st.write("<h5>Stay healthy and take care!💪🙂👌 </h5>",unsafe_allow_html=True)
         else:
             st.error(f"Dear {user_name}, you have diabetes.")
-            st.write("Take necessary steps to manage your diabetes and consult a healthcare professional.")
-    
-
+            st.write("<h5>Take necessary steps to manage your diabetes and consult a healthcare professional 🧑‍⚕️.</h5>")
+            
+            
     # Calling Quote Function
-    st.write(f"<p style='display: flex; align-items: center; justify-content: center; height: 50px; font-weight: bold; font-size: 34px; color: Red;'>Remember this Warrior 👇</p>",
-                unsafe_allow_html=True)
     display_random_quote()
     
-
-    # Footer of the Page
-    display_footer()
+    
     
     
     
 if __name__ == '__main__':
     main()
-    
     
     
     
