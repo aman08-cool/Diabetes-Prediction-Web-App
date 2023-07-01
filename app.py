@@ -80,7 +80,7 @@ def main():
     page_bg_img = """
     <style>
     [data-testid="stAppViewContainer"]{
-        background-color: #94d3c6;
+        background-color: #56AFCC;
         
         background-size: 100%;
         background-position: top left;
