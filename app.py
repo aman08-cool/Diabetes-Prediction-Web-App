@@ -66,7 +66,7 @@ def diabetes_prediction(input_data):
 
 # User name Function
 def get_user_name():
-        user_name = st.text_input("Enter the Female Patient name")
+        user_name = st.text_input("Enter the Patient name")
         return user_name
 
 
@@ -99,13 +99,24 @@ def main():
     st.markdown('---')
     
     
+    #initializing for UnboundError
+    Pregnancies = 0
+    Glucose = 0
+    BloodPressure = 0
+    SkinThickness = 0
+    Insulin = 0
+    BMI = 0.0
+    DiabetesPedigreeFunction = 0.0
+    Age = 0
     
     
     # getting the input data from the user
     col1, col2 = st.columns(2)
     with col1:
         user_name = get_user_name()
-        Pregnancies = st.number_input('Number of Pregnancies', min_value=0, max_value=20, value=0)
+        Gender = st.selectbox('Gender', ['Male', 'Female'])
+        if Gender == 'Female':
+            Pregnancies = st.number_input('Number of Pregnancies', min_value=0, max_value=20, value=0)
         Glucose = st.number_input('Glucose Level', min_value=0, max_value=500, value=100)
         BloodPressure = st.number_input('Blood Pressure Value', min_value=0, max_value=300, value=60)
         SkinThickness = st.number_input('Skin Thickness Value', min_value=0, max_value=100, value=20)
