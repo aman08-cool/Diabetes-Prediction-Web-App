@@ -5,7 +5,7 @@ import streamlit as st
 from datetime import datetime
 
 # Loading the saved model
-loaded_model = pickle.load(open('/Users/amankumardwivedi/Desktop/Diabetes-Prediction-Web-App/trained_model.sav', 'rb'))
+loaded_model = pickle.load(open('trained_model.sav', 'rb'))
 
 quotes = [
     "I may have diabetes, but I am not limited by it. I can live a happy, healthy, and adventurous life. – Ally Brooks",
