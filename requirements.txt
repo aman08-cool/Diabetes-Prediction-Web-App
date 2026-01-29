@@ -1,7 +1,10 @@
+streamlit>=1.30.0
+streamlit-option-menu==0.3.13
+
 numpy
-Pandas
-pickle-mixin
-streamlit
-streamlit-option-menu
+pandas
 scikit-learn
-protobuf
+pickle-mixin
+
+altair==4.2.2
+protobuf<4
